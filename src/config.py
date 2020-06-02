@@ -2,6 +2,7 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 class Config:
     """Set Flask configuration variables from .env file."""
 
@@ -12,7 +13,8 @@ class Config:
     FLASK_DEBUG = 1
 
     # Database
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', os.environ.get('DATABASE_URL'))
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        'SQLALCHEMY_DATABASE_URI', os.environ.get('DATABASE_URL'))
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -33,3 +35,7 @@ class Config:
     USER_EMAIL_SENDER_EMAIL = "noreply@example.com"
 
     USER_REGISTER_TEMPLATE = 'register.html'
+
+    REDDIT_CLIENT_ID = os.getenv('REDDIT_CLIENT_ID')
+    REDDIT_CLIENT_SECRET = os.getenv('REDDIT_CLIENT_SECRET')
+    REDDIT_REDIRECT_URI = os.getenv('REDDIT_REDIRECT_URI')
