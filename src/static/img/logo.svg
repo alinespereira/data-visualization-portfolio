@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="80"
+        stroke="none"
+        fill="white" />
+    <polyline points="0,100 25,100 32,133 53,41 83,173 117,27 147,159 168,67 175,100 200,100"
+        stroke="black"
+        stroke-width="3"
+        fill="none" />
+    <polyline points="185,95 200,100 185,105"
+        stroke="black"
+        stroke-width="3"
+        fill="none" />
+</svg>
+
