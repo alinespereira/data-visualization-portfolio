@@ -6,7 +6,7 @@ from flask import (flash,
                                            url_for)
 
 from flask_user import login_required, roles_required, UserManager
-from .db import db, User, UserRoles, Role
+from src.db import db, User, UserRoles, Role
 
 import os
 
@@ -14,7 +14,7 @@ app = Flask(__name__,
             template_folder='templates',
             static_folder='static',
             static_url_path='/')
-app.config.from_object('config.Config')
+app.config.from_object('src.config.Config')
 
 db.init_app(app)
 user_manager = UserManager(app, db, User)
