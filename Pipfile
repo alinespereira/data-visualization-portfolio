@@ -11,6 +11,14 @@ autopep8 = "*"
 [packages]
 flask = "*"
 gunicorn = "*"
+flask-wtf = "*"
+flask-user = "*"
+flask-sqlalchemy = "*"
+email-validator = "*"
+psycopg2 = "*"
+flask-script = "*"
+flask-migrate = "*"
+alembic = "*"
 
 [requires]
 python_version = "3.7"
