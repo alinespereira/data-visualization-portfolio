@@ -1,38 +1,34 @@
 {% extends 'base.html' %}
 
-{% block title %}Log In{% endblock %}
+{% from '_macros.html' import render_form_group %}
+
+{% block title %}Register{% endblock %}
 
 {% block content %}
 
-<form method="post">
+<h1>Register here!</h1>
+
+<form class="needs-validation" novalidate>
     {{ form.csrf_token }}
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" name="username" id="username" required>
-    </div>
-    <div class="form-group">
+    {{ render_form_group(form.username, 'text', true) }}
+    {{ render_form_group(form.email, 'email', true) }}
+    {{ render_form_group(form.first_name, 'text', true) }}
+    {{ render_form_group(form.last_name, 'text', true) }}
+    {{ render_form_group(form.password, 'password', true) }}
+    {{ render_form_group(form.retype_password, 'password', true) }}
+
+    {# <div class="form-group">
         <label for="email">E-mail</label>
         <input class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
+        <div class="invalid-feedback">
+            {{ form.email.errors|map('safe')|join('<br/>') }}
+        </div>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
             else.</small>
-    </div>
-    <div class="form-group">
-        <label for="first-name">First Name</label>
-        <input class="form-control" name="first_name" id="first-name" required>
-    </div>
-    <div class="form-group">
-        <label for="last-name">Last Name</label>
-        <input class="form-control" name="last_name" id="last-name" required>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" id="password" required>
-    </div>
-    <div class="form-group">
-        <label for="retype-password">Repeat Password</label>
-        <input type="password" class="form-control" name="retype_password" id="retype-password" required>
-    </div>
+    </div> #}
     <input type="submit" class="btn btn-primary" value="Register">
 </form>
+
+<p class="mt-2">Already a member? <a href={{ url_for('user.login') }}>Login</a></p>
 
 {% endblock %}
