@@ -1,0 +1,10 @@
+{% macro render_form_group(field, type, required = true) -%}
+<div class="form-group">
+    <label for="{{ field.id }}">{{ field.label }}</label>
+    <input type="{{ type }}" class="form-control {% if field.errors %}is-invalid{% endif %}" name="{{ field.name }}"
+        id="{{ field.id }}" {% if required %}required{% endif %}>
+    <div class="invalid-feedback">
+        {{ field.errors|map('safe')|join('<br/>') }}
+    </div>
+</div>
+{%- endmacro %}
