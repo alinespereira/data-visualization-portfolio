@@ -5,7 +5,8 @@ from flask import (flash,
                    abort,
                    url_for)
 
-from flask_user import login_required, roles_required, UserManager
+from flask_user import login_required, roles_required
+from src.custom_user_manager import CustomUserManager as UserManager
 from src.db import db, User, UserRoles, Role
 
 from src.blueprints import reddit
