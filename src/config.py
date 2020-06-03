@@ -34,6 +34,7 @@ class Config:
     USER_EMAIL_SENDER_NAME = USER_APP_NAME
     USER_EMAIL_SENDER_EMAIL = "noreply@example.com"
 
+    USER_LOGIN_TEMPLATE = 'user/login.html'
     USER_REGISTER_TEMPLATE = 'user/register.html'
 
     REDDIT_CLIENT_ID = os.getenv('REDDIT_CLIENT_ID')
