@@ -12,7 +12,7 @@
         {# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
             Log in
         </button> #}
-        {% if request.path != '/user/register' %}
+        {% if request.path not in  ['/user/register', '/user/sign-in'] %}
         {% if current_user.is_authenticated %}
         <span class="navbar-text">Olá, {{ current_user.username }}</span>
         <a href={{ url_for('user.logout') }} class="btn btn-success ml-1">Logout</a>

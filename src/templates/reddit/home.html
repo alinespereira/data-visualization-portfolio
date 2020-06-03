@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user is defined %}
+<h2>Hello, {{user.name}}</h2>
+{% elif url is defined %}
+<a href="{{ url }}">Log in into Reddit</a>
+{% endif %}
+{% endblock content %}
