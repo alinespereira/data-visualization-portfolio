@@ -2,24 +2,58 @@
 
 {% block content %}
 
-<form class="needs-validation" method="POST" novalidate>
-    {{ form.csrf_token }}
-    <div class="form-group">
-        <label for="username">Username or E-mail</label>
-        <input class="form-control{% if form.password.errors %}is-invalid{% endif %}" name="username" id="username"
-            required>
+<div class="grid-x grid-padding-x">
+    <div class="cell">
+        <form method="POST" class="small-form callout" data-abide novalidate>
+            {{ form.csrf_token }}
+            <h3 class="text-center">Log in with your account</h3>
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <div data-abide-error class="alert callout" style="display: none;">
+                            <p>Please, check your username/e-mail and password.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <label>
+                            Username or e-mail
+                            <input type="text" name="username" id="username" aria-errormessage="username-error"
+                                required>
+                            <span class="form-error">
+                                {{ form.username.errors|map('safe')|join('<br/ >') }}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <label>
+                            Password
+                            <input type="password" name="password" id="password" aria-errormessage="password-error"
+                                required>
+                            <span class="form-error">
+                                {{ form.password.errors|map('safe')|join('<br/ >') }}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <button class="button" type="submit" value="Submit">Log in</button>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <p>Does not have an account? <a href={{ url_for('user.register') }}>Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}" name="password"
-            id="password" required>
-        {% if form.password.errors %}
-        <div class="invalid-feedback">Invalid credentials!</div>
-        {% endif %}
-    </div>
-    <input type="submit" class="btn btn-primary" value="Log in">
-</form>
-
-<p class="mt-2">Does not have an account? <a href={{ url_for('user.register') }}>Register</a></p>
+</div>
 
 {% endblock %}

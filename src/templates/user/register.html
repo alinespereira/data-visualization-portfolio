@@ -2,33 +2,42 @@
 
 {% from '_macros.html' import render_form_group %}
 
-{% block title %}Register{% endblock %}
-
 {% block content %}
 
-<h1>Register here!</h1>
-
-<form class="needs-validation" novalidate>
-    {{ form.csrf_token }}
-    {{ render_form_group(form.username, 'text', true) }}
-    {{ render_form_group(form.email, 'email', true) }}
-    {{ render_form_group(form.first_name, 'text', true) }}
-    {{ render_form_group(form.last_name, 'text', true) }}
-    {{ render_form_group(form.password, 'password', true) }}
-    {{ render_form_group(form.retype_password, 'password', true) }}
-
-    {# <div class="form-group">
-        <label for="email">E-mail</label>
-        <input class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
-        <div class="invalid-feedback">
-            {{ form.email.errors|map('safe')|join('<br/>') }}
-        </div>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-            else.</small>
-    </div> #}
-    <input type="submit" class="btn btn-primary" value="Register">
-</form>
-
-<p class="mt-2">Already a member? <a href={{ url_for('user.login') }}>Login</a></p>
+<div class="grid-x grid-padding-x">
+    <div class="cell">
+        <form method="POST" class="small-form callout" data-abide novalidate>
+            {{ form.csrf_token }}
+            <h3 class="text-center">Register with your e-mail</h3>
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <div data-abide-error class="alert callout" style="display: none;">
+                            <p>Your form has errors: please check.</p>
+                        </div>
+                    </div>
+                </div>
+                {{ render_form_group(form.username, 'text', true) }}
+                {{ render_form_group(form.email, 'email', true) }}
+                {{ render_form_group(form.first_name, 'text', true) }}
+                {{ render_form_group(form.last_name, 'text', true) }}
+                {{ render_form_group(form.password, 'password', true) }}
+                {{ render_form_group(form.retype_password, 'password', true) }}
+            </div>
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <button class="button" type="submit" value="Register">Register</button>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <div class="cell">
+                        <p>Already a member? <a href={{ url_for('user.login') }}>Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
