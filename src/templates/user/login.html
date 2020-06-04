@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import render_form_group, closable_abide_error %}
 
 {% block content %}
 
@@ -7,53 +6,30 @@
     <div class="cell">
         <form method="POST" class="small-form" data-abide novalidate>
             {{ form.csrf_token }}
-            <h3 class="text-center">{{ gettext('Log in with your account') }}</h3>
-            <div class="grid-container">
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <div data-abide-error class="alert callout" style="display: none;">
-                            <p>{{ gettext('Please, check your username or e-mail and password.') }}</p>
-                        </div>
-                    </div>
+            <fieldset class="fieldset">
+                <h1 class="h3 text-center">{{ gettext('Log in with your account') }}</h1>
+                <hr>
+                <div data-abide-error class="alert callout" style="display: none;">
+                    <p>{{ gettext('Please, check your username or e-mail and password.') }}</p>
                 </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.username.label }}
-                            <input type="text" name="username" id="username" aria-errormessage="username-error"
-                                required>
-                            <span class="form-error">
-                                {{ form.username.errors|join('<br/ >') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.password.label }}
-                            <input type="password" name="password" id="password" aria-errormessage="password-error"
-                                required>
-                            <span class="form-error">
-                                {{ form.password.errors|join('<br/ >') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-container">
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <button class="button" type="submit" value="Submit">{{ gettext("Log in") }}</button>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <p>{{ gettext("Does not have an account?") }} <a
-                                href={{ url_for('user.register') }}>{{ gettext("Register") }}</a></p>
-                    </div>
-                </div>
-            </div>
+                <label>
+                    {{ form.username.label }}
+                    <input type="text" name="username" id="username" aria-errormessage="username-error" required>
+                    <span class="form-error">
+                        {{ form.username.errors|join('<br/ >') }}
+                    </span>
+                </label>
+                <label>
+                    {{ form.password.label }}
+                    <input type="password" name="password" id="password" aria-errormessage="password-error" required>
+                    <span class="form-error">
+                        {{ form.password.errors|join('<br/ >') }}
+                    </span>
+                </label>
+                <button class="button" type="submit" value="Submit">{{ gettext("Log in") }}</button>
+            </fieldset>
+            <p>{{ gettext("Does not have an account?") }} <a
+                    href={{ url_for('user.register') }}>{{ gettext("Register") }}</a></p>
         </form>
     </div>
 </div>

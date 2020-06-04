@@ -6,101 +6,63 @@
     <div class="cell">
         <form method="POST" class="small-form" data-abide novalidate>
             {{ form.csrf_token }}
-            <h3 class="text-center">{{ gettext("Register with your e-mail") }}</h3>
-            <div class="grid-container">
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <div data-abide-error class="alert callout" style="display: none;">
-                            <p>{{ gettext("Your form has errors: please check.") }}</p>
-                        </div>
-                    </div>
+            <fieldset class="fieldset">
+                <h1 class="h3 text-center">{{ gettext("Register with your e-mail") }}</h1>
+                <hr>
+                <div data-abide-error class="alert callout" style="display: none;">
+                    <p>{{ gettext("Your form has errors: please check.") }}</p>
                 </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.username.label }}
-                            <input type='text' name={{ form.username.name }} id={{ form.username.id }}
-                                aria-errormessage="{{ form.username.id }}-error" required>
-                            <span class="form-error">
-                                {{ form.username.errors|join('<br/>') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.email.label }}
-                            <input type='email' name={{ form.email.name }} id={{ form.email.id }}
-                                aria-errormessage="{{ form.email.id }}-error" required>
-                            <span class="form-error">
-                                {{ form.email.errors|join('<br/>') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.first_name.label }}
-                            <input type="text" name={{ form.first_name.name }} id={{ form.first_name.id }}
-                                aria-errormessage="{{ form.first_name.id }}-error" required>
-                            <span class="form-error">
-                                {{ form.first_name.errors|join('<br/>') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.last_name.label }}
-                            <input type="text" name={{ form.last_name.name }} id={{ form.last_name.id }}
-                                aria-errormessage="{{ form.last_name.id }}-error" required>
-                            <span class="form-error">
-                                {{ form.last_name.errors|join('<br/>') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.password.label }}
-                            <input type="password" name={{ form.password.name }} id={{ form.password.id }}
-                                aria-errormessage="{{ form.password.id }}-error" required>
-                            <span class="form-error">
-                                {{ form.password.errors|join('<br/>') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <label>
-                            {{ form.confirm.label }}
-                            <input type="password" name={{ form.confirm.name }} id={{ form.confirm.id }}
-                                aria-errormessage="{{ form.confirm.id }}-error" required>
-                            <span class="form-error">
-                                {{ form.confirm.errors|join('<br/>') }}
-                            </span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-container">
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <button class="button" type="submit" value="Register">{{ gettext("Register") }}</button>
-                    </div>
-                </div>
-                <div class="grid-x grid-padding-x">
-                    <div class="cell">
-                        <p>{{ gettext("Already a member?") }} <a
-                                href={{ url_for('user.login') }}>{{ gettext("Log in") }}</a></p>
-                    </div>
-                </div>
-            </div>
+                <label>
+                    {{ form.username.label }}
+                    <input type='text' name={{ form.username.name }} id={{ form.username.id }}
+                        aria-errormessage="{{ form.username.id }}-error" required>
+                    <span class="form-error">
+                        {{ form.username.errors|join('<br/>') }}
+                    </span>
+                </label>
+                <label>
+                    {{ form.email.label }}
+                    <input type='email' name={{ form.email.name }} id={{ form.email.id }}
+                        aria-errormessage="{{ form.email.id }}-error" required>
+                    <span class="form-error">
+                        {{ form.email.errors|join('<br/>') }}
+                    </span>
+                </label>
+                <label>
+                    {{ form.first_name.label }}
+                    <input type="text" name={{ form.first_name.name }} id={{ form.first_name.id }}
+                        aria-errormessage="{{ form.first_name.id }}-error" required>
+                    <span class="form-error">
+                        {{ form.first_name.errors|join('<br/>') }}
+                    </span>
+                </label>
+                <label>
+                    {{ form.last_name.label }}
+                    <input type="text" name={{ form.last_name.name }} id={{ form.last_name.id }}
+                        aria-errormessage="{{ form.last_name.id }}-error" required>
+                    <span class="form-error">
+                        {{ form.last_name.errors|join('<br/>') }}
+                    </span>
+                </label>
+                <label>
+                    {{ form.password.label }}
+                    <input type="password" name={{ form.password.name }} id={{ form.password.id }}
+                        aria-errormessage="{{ form.password.id }}-error" required>
+                    <span class="form-error">
+                        {{ form.password.errors|join('<br/>') }}
+                    </span>
+                </label>
+                <label>
+                    {{ form.confirm.label }}
+                    <input type="password" name={{ form.confirm.name }} id={{ form.confirm.id }}
+                        aria-errormessage="{{ form.confirm.id }}-error" required>
+                    <span class="form-error">
+                        {{ form.confirm.errors|join('<br/>') }}
+                    </span>
+                </label>
+                <button class="button" type="submit" value="Register">{{ gettext("Register") }}</button>
+            </fieldset>
+            <p>{{ gettext("Already a member?") }} <a href={{ url_for('user.login') }}>{{ gettext("Log in") }}</a></p>
         </form>
     </div>
 </div>
