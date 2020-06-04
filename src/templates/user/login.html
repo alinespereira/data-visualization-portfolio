@@ -6,23 +6,23 @@
     <div class="cell">
         <form method="POST" class="small-form callout" data-abide novalidate>
             {{ form.csrf_token }}
-            <h3 class="text-center">Log in with your account</h3>
+            <h3 class="text-center">{{ gettext('Log in with your account') }}</h3>
             <div class="grid-container">
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
                         <div data-abide-error class="alert callout" style="display: none;">
-                            <p>Please, check your username/e-mail and password.</p>
+                            <p>{{ gettext('Please, check your username or e-mail and password.') }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
                         <label>
-                            Username or e-mail
+                            {{ form.username.label }}
                             <input type="text" name="username" id="username" aria-errormessage="username-error"
                                 required>
                             <span class="form-error">
-                                {{ form.username.errors|map('safe')|join('<br/ >') }}
+                                {{ form.username.errors|join('<br/ >') }}
                             </span>
                         </label>
                     </div>
@@ -30,11 +30,11 @@
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
                         <label>
-                            Password
+                            {{ form.password.label }}
                             <input type="password" name="password" id="password" aria-errormessage="password-error"
                                 required>
                             <span class="form-error">
-                                {{ form.password.errors|map('safe')|join('<br/ >') }}
+                                {{ form.password.errors|join('<br/ >') }}
                             </span>
                         </label>
                     </div>
@@ -43,12 +43,13 @@
             <div class="grid-container">
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
-                        <button class="button" type="submit" value="Submit">Log in</button>
+                        <button class="button" type="submit" value="Submit">{{ gettext("Log in") }}</button>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
-                        <p>Does not have an account? <a href={{ url_for('user.register') }}>Register</a></p>
+                        <p>{{ gettext("Does not have an account?") }} <a
+                                href={{ url_for('user.register') }}>{{ gettext("Register") }}</a></p>
                     </div>
                 </div>
             </div>
