@@ -16,14 +16,20 @@
             <img src="/img/logo.svg" width="40" alt="Portfolio">
         </a>
         <div class="hide-for-medium">
+            {% if current_user.is_authenticated %}
             {{ gettext("Hello, %(name)s!", name=current_user.first_name) }}
+            {% else %}
+            {% with login=url_for('user.login'), register=url_for('user.register')  %}
+            {% trans %}Welcome! Please <a href={{ login }}>login</a> or <a
+                href={{ register }}>register</a>{% endtrans %}
+            {% endwith %}
+            {% endif %}
+            <hr>
         </div>
-        <hr class="hide-for-medium">
         <ul class="vertical medium-horizontal menu" data-dropdown-menu>
         </ul>
     </div>
-    <hr class="hide-for-medium">
-    <div class="top-bar-right">
+    <div class="top-bar-right show-for-medium">
         <ul class="vertical medium-horizontal menu" data-dropdown-menu>
             {% if request.path not in  ['/user/register', '/user/sign-in'] %}
             {% if current_user.is_authenticated %}

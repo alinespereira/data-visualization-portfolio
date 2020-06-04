@@ -3,7 +3,7 @@
 {% block content %}
 <div class="grid-x">
     <div class="cell">
-        <h1>Hello, World!</h1>
+        <h1>{{ gettext("Hello, World!") }}</h1>
 
         {% if current_user.is_authenticated %}
         {% include 'index.html' %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-04 15:15-0300\n"
+"POT-Creation-Date: 2020-06-04 18:09-0300\n"
 "PO-Revision-Date: 2020-06-04 13:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: src/forms/login.py:7
+#: src/forms/login.py:8
 msgid "Username or e-mail"
 msgstr "Usuário ou e-mail"
 
-#: src/forms/login.py:9 src/forms/register.py:17
+#: src/forms/login.py:10 src/forms/register.py:15
 msgid "Password"
 msgstr "Senha"
 
-#: src/forms/register.py:7
+#: src/forms/register.py:8
 msgid "Username"
 msgstr "Usuário"
 
@@ -38,58 +38,75 @@ msgstr "E-mail"
 msgid "First Name"
 msgstr "Nome"
 
-#: src/forms/register.py:14
+#: src/forms/register.py:13
 msgid "Last Name"
 msgstr "Sobrenome"
 
-#: src/forms/register.py:21
+#: src/forms/register.py:19
 msgid "Confirm your password"
 msgstr "Digite sua senha novamente"
 
-#: src/templates/topbar.html:3
+#: src/templates/home.html:6
+msgid "Hello, World!"
+msgstr "Olá, mundo!"
+
+#: src/templates/index.html:1
+msgid "This is the index"
+msgstr "Este é o índice."
+
+#: src/templates/topbar.html:4
 msgid "Menu"
 msgstr "Menu"
 
-#: src/templates/topbar.html:20
+#: src/templates/topbar.html:20 src/templates/topbar.html:36
 #, python-format
 msgid "Hello, %(name)s!"
 msgstr "Olá, %(name)s!"
 
-#: src/templates/topbar.html:21
+#: src/templates/topbar.html:23
+#, python-format
+msgid ""
+"Welcome! Please <a href=%(login)s>login</a> or <a\n"
+"                href=%(register)s>register</a>"
+msgstr ""
+"Bem vindo! Por favor <a href=%(login)s>entre</a> ou <a\n"
+"                href=%(register)s>cadastre-se</a>"
+
+#: src/templates/topbar.html:37
 msgid "Logout"
 msgstr "Sair"
 
-#: src/templates/topbar.html:23 src/templates/user/login.html:46
-#: src/templates/user/register.html:100
+#: src/templates/topbar.html:39 src/templates/user/login.html:29
+#: src/templates/user/register.html:65
 msgid "Log in"
 msgstr "Entrar"
 
-#: src/templates/topbar.html:24 src/templates/user/login.html:52
-#: src/templates/user/register.html:94
+#: src/templates/topbar.html:40 src/templates/user/login.html:32
+#: src/templates/user/register.html:63
 msgid "Register"
 msgstr "Cadastre-se"
 
-#: src/templates/user/login.html:9
+#: src/templates/user/login.html:10
 msgid "Log in with your account"
-msgstr "Acesse usando sua conta"
+msgstr "Acesse sua conta"
 
-#: src/templates/user/login.html:14
+#: src/templates/user/login.html:13
 msgid "Please, check your username or e-mail and password."
 msgstr "Por favor, confira seu usuário ou e-mail e sua senha"
 
-#: src/templates/user/login.html:51
+#: src/templates/user/login.html:31
 msgid "Does not have an account?"
 msgstr "Ainda não possui uma conta?"
 
-#: src/templates/user/register.html:9
+#: src/templates/user/register.html:10
 msgid "Register with your e-mail"
 msgstr "Cadastre-se com seu e-mail"
 
-#: src/templates/user/register.html:14
+#: src/templates/user/register.html:13
 msgid "Your form has errors: please check."
 msgstr "O formulário possui erros: por favor, verifique."
 
-#: src/templates/user/register.html:99
+#: src/templates/user/register.html:65
 msgid "Already a member?"
 msgstr "Já é um membro?"
 
@@ -113,4 +130,20 @@ msgstr "Já é um membro?"
 
 #~ msgid "Passwords must match"
 #~ msgstr "Senhas devem ser iguais"
+
+#~ msgid ""
+#~ "\n"
+#~ "            Welcome! Please <a "
+#~ "href=%(login)s>login</a> or <a "
+#~ "href=%(register)s>signup</a>\n"
+#~ "            "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Welcome! Please <a href=%(login)s>login</a> or"
+#~ " <a href=%(register)s>register</a>"
+#~ msgstr ""
+#~ "Bem vindo! Por favor <a "
+#~ "href=%(login)s>entre</a> or <a href=%(register)s"
+#~ ">cadastre-se</a>"
 
