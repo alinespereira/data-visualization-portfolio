@@ -14,7 +14,7 @@
         </ul>
     </div>
     <div class="top-bar-right">
-        <ul class="menu">
+        <ul class="dropdown menu" data-dropdown-menu>
             {% if request.path not in  ['/user/register', '/user/sign-in'] %}
             {% if current_user.is_authenticated %}
             <li class="menu-text">{{ gettext("Hello, %(name)s!", name=current_user.first_name) }}</li>

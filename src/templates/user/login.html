@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import render_form_group, closable_abide_error %}
 
 {% block content %}
 
 <div class="grid-x grid-padding-x">
     <div class="cell">
-        <form method="POST" class="small-form callout" data-abide novalidate>
+        <form method="POST" class="small-form" data-abide novalidate>
             {{ form.csrf_token }}
             <h3 class="text-center">{{ gettext('Log in with your account') }}</h3>
             <div class="grid-container">

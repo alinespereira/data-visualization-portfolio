@@ -9,7 +9,8 @@
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <link rel="stylesheet" href={{ url_for('static', filename='css/foundation.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/foundation.min.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/motion-ui.min.css') }} />
 
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }} />
 
@@ -23,18 +24,35 @@
         {% include 'topbar.html' %}
     </header>
 
-    <div class="grid-container">
-        {% block content %} {% endblock content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {# <div class="callout {{ category }}" data-animate="fade-out" data-closable>
+        <p>{{ message }}</p>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> #}
+    <div id="flash-messages" class="callout {{ category }} fade-out">
+        <p>{{ message }}</p>
     </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <main>
+        <div class="grid-container">
+
+            {% block content %} {% endblock content %}
+        </div>
+    </main>
 
     <script src={{ url_for('static', filename='js/jquery.js') }}></script>
     <script src={{ url_for('static', filename='js/what-input.js') }}></script>
-    <script src={{ url_for('static', filename='js/foundation.js') }}></script>
+    <script src={{ url_for('static', filename='js/foundation.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/motion-ui.min.js') }}></script>
 
-    <script>
-        $(document).foundation();
-
-    </script>
+    <script src={{ url_for('static', filename='js/script.js') }}></script>
 </body>
 
 </html>
