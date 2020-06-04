@@ -1,23 +1,33 @@
 <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
-    <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-    <div class="title-bar-title">{{ gettext("Menu") }}</div>
+    <div class="title-bar-left">
+        <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+        {{ gettext("Menu") }}
+    </div>
+    <div class="title-bar-right">
+        <a href="/">
+            <img src="/img/logo-dark.svg" width="30" alt="Portfolio">
+        </a>
+    </div>
 </div>
 
 <div class="top-bar" id="responsive-menu">
     <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <a href="/">
-                    <img src="/img/logo.svg" width="40" height="40" alt="Portfolio">
-                </a>
-            </li>
+        <a href="/" class="show-for-medium">
+            <img src="/img/logo.svg" width="40" alt="Portfolio">
+        </a>
+        <div class="hide-for-medium">
+            {{ gettext("Hello, %(name)s!", name=current_user.first_name) }}
+        </div>
+        <hr class="hide-for-medium">
+        <ul class="vertical medium-horizontal menu" data-dropdown-menu>
         </ul>
     </div>
+    <hr class="hide-for-medium">
     <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
+        <ul class="vertical medium-horizontal menu" data-dropdown-menu>
             {% if request.path not in  ['/user/register', '/user/sign-in'] %}
             {% if current_user.is_authenticated %}
-            <li class="menu-text">{{ gettext("Hello, %(name)s!", name=current_user.first_name) }}</li>
+            <li class="menu-text show-for-medium">{{ gettext("Hello, %(name)s!", name=current_user.first_name) }}</li>
             <li><a href={{ url_for('user.logout') }} class="button">{{ gettext("Logout") }}</a></li>
             {% else %}
             <li><a href={{ url_for('user.login') }} class="hollow button">{{ gettext("Log in") }}</a></li>
