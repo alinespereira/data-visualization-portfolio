@@ -20,6 +20,7 @@ flask-script = "*"
 flask-migrate = "*"
 alembic = "*"
 requests = "*"
+flask-babel = "*"
 
 [requires]
 python_version = "3.7"
