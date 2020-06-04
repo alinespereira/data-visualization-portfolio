@@ -1,0 +1,116 @@
+# Portuguese translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-06-04 15:15-0300\n"
+"PO-Revision-Date: 2020-06-04 13:10-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: pt\n"
+"Language-Team: pt <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: src/forms/login.py:7
+msgid "Username or e-mail"
+msgstr "Usuário ou e-mail"
+
+#: src/forms/login.py:9 src/forms/register.py:17
+msgid "Password"
+msgstr "Senha"
+
+#: src/forms/register.py:7
+msgid "Username"
+msgstr "Usuário"
+
+#: src/forms/register.py:9
+msgid "Email"
+msgstr "E-mail"
+
+#: src/forms/register.py:12
+msgid "First Name"
+msgstr "Nome"
+
+#: src/forms/register.py:14
+msgid "Last Name"
+msgstr "Sobrenome"
+
+#: src/forms/register.py:21
+msgid "Confirm your password"
+msgstr "Digite sua senha novamente"
+
+#: src/templates/topbar.html:3
+msgid "Menu"
+msgstr "Menu"
+
+#: src/templates/topbar.html:20
+#, python-format
+msgid "Hello, %(name)s!"
+msgstr "Olá, %(name)s!"
+
+#: src/templates/topbar.html:21
+msgid "Logout"
+msgstr "Sair"
+
+#: src/templates/topbar.html:23 src/templates/user/login.html:46
+#: src/templates/user/register.html:100
+msgid "Log in"
+msgstr "Entrar"
+
+#: src/templates/topbar.html:24 src/templates/user/login.html:52
+#: src/templates/user/register.html:94
+msgid "Register"
+msgstr "Cadastre-se"
+
+#: src/templates/user/login.html:9
+msgid "Log in with your account"
+msgstr "Acesse usando sua conta"
+
+#: src/templates/user/login.html:14
+msgid "Please, check your username or e-mail and password."
+msgstr "Por favor, confira seu usuário ou e-mail e sua senha"
+
+#: src/templates/user/login.html:51
+msgid "Does not have an account?"
+msgstr "Ainda não possui uma conta?"
+
+#: src/templates/user/register.html:9
+msgid "Register with your e-mail"
+msgstr "Cadastre-se com seu e-mail"
+
+#: src/templates/user/register.html:14
+msgid "Your form has errors: please check."
+msgstr "O formulário possui erros: por favor, verifique."
+
+#: src/templates/user/register.html:99
+msgid "Already a member?"
+msgstr "Já é um membro?"
+
+#~ msgid "Register with your e-mail"
+#~ msgstr "Cadastre-se com seu e-mail"
+
+#~ msgid "Your form has errors: please check."
+#~ msgstr "O formulário possui erros: por favor, verifique."
+
+#~ msgid "Already a member?"
+#~ msgstr "Já é um membro?"
+
+#~ msgid "%(label)s"
+#~ msgstr ""
+
+#~ msgid "Retype Password"
+#~ msgstr ""
+
+#~ msgid "Username or e-mail"
+#~ msgstr "Usuário ou e-mail"
+
+#~ msgid "Passwords must match"
+#~ msgstr "Senhas devem ser iguais"
+

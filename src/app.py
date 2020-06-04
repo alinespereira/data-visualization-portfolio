@@ -8,6 +8,7 @@ from flask import (flash,
 from flask_user import login_required, roles_required
 from src.custom_user_manager import CustomUserManager as UserManager
 from src.db import db, User, UserRoles, Role
+from src.babel import babel
 
 from src.blueprints import reddit
 
@@ -22,6 +23,7 @@ app.config.from_object('src.config.Config')
 app.register_blueprint(reddit)
 
 db.init_app(app)
+babel.init_app(app)
 user_manager = UserManager(app, db, User)
 
 

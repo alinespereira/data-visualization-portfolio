@@ -20,6 +20,13 @@ flask-script = "*"
 flask-migrate = "*"
 alembic = "*"
 requests = "*"
+flask-babel = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+babel-extract = "pybabel extract -F src/babel.cfg -k lazy_gettext -o src/messages.pot src"
+babel-init = "pybabel init -t src/messages.pot -d src/translations -l"
+babel-compile = "pybabel compile -d src/translations"
+babel-update = "pybabel update -i src/messages.pot -d src/translations"

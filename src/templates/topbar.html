@@ -1,6 +1,6 @@
 <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
     <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-    <div class="title-bar-title">Menu</div>
+    <div class="title-bar-title">{{ gettext("Menu") }}</div>
 </div>
 
 <div class="top-bar" id="responsive-menu">
@@ -17,11 +17,11 @@
         <ul class="menu">
             {% if request.path not in  ['/user/register', '/user/sign-in'] %}
             {% if current_user.is_authenticated %}
-            <li class="menu-text">Olá, {{ current_user.first_name }}</li>
-            <li><a href={{ url_for('user.logout') }} class="button">Logout</a></li>
+            <li class="menu-text">{{ gettext("Hello, %(name)s!", name=current_user.first_name) }}</li>
+            <li><a href={{ url_for('user.logout') }} class="button">{{ gettext("Logout") }}</a></li>
             {% else %}
-            <li><a href={{ url_for('user.login') }} class="hollow button">Login</a></li>
-            <li><a href={{ url_for('user.register') }} class="button">Register</a></li>
+            <li><a href={{ url_for('user.login') }} class="hollow button">{{ gettext("Log in") }}</a></li>
+            <li><a href={{ url_for('user.register') }} class="button">{{ gettext("Register") }}</a></li>
             {% endif %}
             {% endif %}
         </ul>

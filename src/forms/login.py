@@ -1,10 +1,11 @@
 from flask_user.forms import LoginForm
 from wtforms import StringField, PasswordField, validators
+from flask_babel import lazy_gettext
+
 
 class CustomLoginForm(LoginForm):
-    username = StringField('Username', [validators.Length(min=4, max=25)])
-    password = PasswordField('New Password', [
-        validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords must match')
+    username = StringField(lazy_gettext('Username or e-mail'), [
+                           validators.Length(min=4, max=25)])
+    password = PasswordField(lazy_gettext('Password'), [
+        validators.DataRequired()
     ])
-    confirm = PasswordField('Repeat Password')
