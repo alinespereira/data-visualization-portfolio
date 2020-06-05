@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-04 18:09-0300\n"
+"POT-Creation-Date: 2020-06-05 02:53-0300\n"
 "PO-Revision-Date: 2020-06-04 13:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -58,12 +58,12 @@ msgstr "Este é o índice."
 msgid "Menu"
 msgstr "Menu"
 
-#: src/templates/topbar.html:20 src/templates/topbar.html:36
+#: src/templates/topbar.html:17 src/templates/topbar.html:47
 #, python-format
 msgid "Hello, %(name)s!"
 msgstr "Olá, %(name)s!"
 
-#: src/templates/topbar.html:23
+#: src/templates/topbar.html:20
 #, python-format
 msgid ""
 "Welcome! Please <a href=%(login)s>login</a> or <a\n"
@@ -72,19 +72,40 @@ msgstr ""
 "Bem vindo! Por favor <a href=%(login)s>entre</a> ou <a\n"
 "                href=%(register)s>cadastre-se</a>"
 
-#: src/templates/topbar.html:37
+#: src/templates/simulators/home.html:4 src/templates/topbar.html:35
+msgid "Simulators"
+msgstr "Simuladores"
+
+#: src/templates/simulators/game_of_life.html:4
+#: src/templates/simulators/home.html:7 src/templates/topbar.html:37
+msgid "Game of life"
+msgstr "Jogo da vida"
+
+#: src/templates/topbar.html:48
 msgid "Logout"
 msgstr "Sair"
 
-#: src/templates/topbar.html:39 src/templates/user/login.html:29
+#: src/templates/topbar.html:50 src/templates/user/login.html:29
 #: src/templates/user/register.html:65
 msgid "Log in"
 msgstr "Entrar"
 
-#: src/templates/topbar.html:40 src/templates/user/login.html:32
+#: src/templates/topbar.html:51 src/templates/user/login.html:32
 #: src/templates/user/register.html:63
 msgid "Register"
 msgstr "Cadastre-se"
+
+#: src/templates/simulators/game_of_life.html:8
+msgid "Pick the desired grid size"
+msgstr "Escolha o tamanho do reticulado"
+
+#: src/templates/simulators/game_of_life.html:15
+msgid "Start random"
+msgstr "Início aleatório"
+
+#: src/templates/simulators/game_of_life.html:16
+msgid "Run"
+msgstr "Executar"
 
 #: src/templates/user/login.html:10
 msgid "Log in with your account"
