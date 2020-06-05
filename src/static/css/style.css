@@ -7,6 +7,24 @@ main {
     margin-top: 1em;
 }
 
+svg.center {
+    display: block;
+    margin: auto;
+}
+
+.square {
+    stroke: black;
+    stroke-width: 0.2;
+}
+
+.square.alive {
+    fill: lightblue
+}
+
+.square.dead {
+    fill: white
+}
+
 @keyframes reveal {
     from {
         opacity: 0;
