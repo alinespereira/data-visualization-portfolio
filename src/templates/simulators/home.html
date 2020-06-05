@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ gettext("Simulators") }}</h1>
+<div class="grid-x grid-padding-x">
+    <div class="cell">
+        <a href="/simulators/game-of-life">{{ gettext("Game of life") }}</a>
+    </div>
+</div>
+{% endblock content %}

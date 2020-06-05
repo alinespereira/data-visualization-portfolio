@@ -10,7 +10,7 @@ from src.custom_user_manager import CustomUserManager as UserManager
 from src.db import db, User, UserRoles, Role
 from src.babel import babel
 
-from src.blueprints import reddit
+from src.blueprints import reddit, simulators
 
 import os
 
@@ -21,6 +21,7 @@ app = Flask(__name__,
 app.config.from_object('src.config.Config')
 
 app.register_blueprint(reddit)
+app.register_blueprint(simulators)
 
 db.init_app(app)
 babel.init_app(app)

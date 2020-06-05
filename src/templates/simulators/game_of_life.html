@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ gettext("Game of life") }}</h1>
+<div class="grid-x grid-margin-x">
+    <div class="cell medium-4 large-6">
+        <label>
+            {{ gettext("Pick the desired grid size") }}:
+            <input type="number" id="grid-size" min="10" max="100" value="20" oninput="updateGrid()">
+        </label>
+    </div>
+</div>
+
+<div class="grid-x grid-margin-x">
+    <div class="cell">
+        <a class="button" onclick="startRandom()">{{ gettext("Start random") }}</a>
+        <a class="button" onclick="run()">{{ gettext("Run") }}</a>
+    </div>
+</div>
+
+<div class="grid-x grid-margin-x">
+    <div id="grid" class="cell">
+    </div>
+</div>
+
+<script>
+    const gridDiv = document.getElementById('grid')
+    const gridSizeInput = document.getElementById('grid-size')
+
+    function updateGrid(board = []) {
+        const colorScale = d3.scaleLinear().domain([0, 1])
+            .range(["white", "blue"])
+
+        d3.select(gridDiv)
+            .selectAll('*')
+            .remove().enter()
+
+        const svg = d3.select(gridDiv)
+            .append('svg')
+            .attr('width', gridDiv.clientWidth)
+            .attr('height', gridDiv.clientWidth)
+        const gridSize = +d3.select('#grid-size').property('value')
+
+        svg
+            .selectAll('*')
+            .remove()
+
+        const rectSide = Math.floor(gridDiv.clientWidth / gridSize)
+
+        const gridData = []
+        if (gridData.length === 0) {
+            for (let i = 0; i < gridSize; i++) {
+                gridData.push([])
+                for (let j = 0; j < gridSize; j++) {
+                    gridData[i].push({
+                        i,
+                        j,
+                        alive: board.length > 0 ? board[i][j].alive : 0
+                    })
+                }
+            }
+        }
+
+        const row = svg.selectAll(".row")
+            .data(gridData)
+            .enter().append("g")
+            .attr("class", "row")
+
+        const column = row.selectAll(".square")
+            .data(function (d) {
+                return d
+            })
+            .enter().append("rect")
+            .attr("class", "square")
+            .attr("x", function (d) {
+                return d.i * rectSide
+            })
+            .attr("y", function (d) {
+                return d.j * rectSide
+            })
+            .attr("width", rectSide)
+            .attr("height", rectSide)
+            .style("fill", function (d) {
+                return colorScale(d.alive)
+            })
+            .style("stroke", "#222")
+    }
+
+    async function startRandom() {
+        const response = await fetch('/simulators/game-of-life/init', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                size: +d3.select('#grid-size').property('value')
+            }),
+            credentials: 'include',
+        })
+
+        updateGrid(await response.json())
+    }
+
+    async function run() {
+        gridSizeInput.disabled = true;
+        setInterval(async function () {
+            const response = await fetch('/simulators/game-of-life/evolve', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    size: +d3.select('#grid-size').property('value'),
+                    board: d3.selectAll('rect').data()
+                }),
+                credentials: 'include',
+            })
+
+            updateGrid(await response.json())
+        }, 500)
+        gridSizeInput.disabled = false;
+    }
+
+</script>
+{% endblock content %}
