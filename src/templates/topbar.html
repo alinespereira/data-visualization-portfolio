@@ -12,9 +12,6 @@
 
 <div class="top-bar" id="responsive-menu">
     <div class="top-bar-left">
-        <a href="/" class="show-for-medium">
-            <img src="/img/logo.svg" width="40" alt="Portfolio">
-        </a>
         <div class="hide-for-medium">
             {% if current_user.is_authenticated %}
             {{ gettext("Hello, %(name)s!", name=current_user.first_name) }}
@@ -26,11 +23,25 @@
             {% endif %}
             <hr>
         </div>
-        <ul class="vertical medium-horizontal menu" data-dropdown-menu>
+        <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
+            <li>
+                <div class="logo">
+                    <a href="/" class="show-for-medium">
+                        <img src="/img/logo.svg" width="40" alt="Portfolio">
+                    </a>
+                </div>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li><a href="/simulators">{{ gettext("Simulators") }}</a>
+                <ul class="vertical menu">
+                    <li><a href="/simulators/game-of-life">{{ gettext("Game of life") }}</a></li>
+                </ul>
+            </li>
+            {% endif %}
         </ul>
     </div>
     <div class="top-bar-right show-for-medium">
-        <ul class="vertical medium-horizontal menu" data-dropdown-menu>
+        <ul class="vertical medium-horizontal menu">
             {% if request.path not in  ['/user/register', '/user/sign-in'] %}
             {% if current_user.is_authenticated %}
             <li class="menu-text show-for-medium">{{ gettext("Hello, %(name)s!", name=current_user.first_name) }}</li>
