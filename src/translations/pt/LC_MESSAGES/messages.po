@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-05 02:53-0300\n"
+"POT-Creation-Date: 2020-06-05 19:33-0300\n"
 "PO-Revision-Date: 2020-06-04 13:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: src/forms/login.py:8
+#: src/forms/login.py:8 src/templates/user/login.html:16
 msgid "Username or e-mail"
 msgstr "Usuário ou e-mail"
 
 #: src/forms/login.py:10 src/forms/register.py:15
 msgid "Password"
 msgstr "Senha"
+
+#: src/forms/login.py:13
+msgid "Remember me"
+msgstr "Lembrar-me"
 
 #: src/forms/register.py:8
 msgid "Username"
@@ -42,7 +46,7 @@ msgstr "Nome"
 msgid "Last Name"
 msgstr "Sobrenome"
 
-#: src/forms/register.py:19
+#: src/forms/register.py:16
 msgid "Confirm your password"
 msgstr "Digite sua senha novamente"
 
@@ -99,11 +103,11 @@ msgstr "Cadastre-se"
 msgid "Pick the desired grid size"
 msgstr "Escolha o tamanho do reticulado"
 
-#: src/templates/simulators/game_of_life.html:15
+#: src/templates/simulators/game_of_life.html:16
 msgid "Start random"
 msgstr "Início aleatório"
 
-#: src/templates/simulators/game_of_life.html:16
+#: src/templates/simulators/game_of_life.html:17
 msgid "Run"
 msgstr "Executar"
 

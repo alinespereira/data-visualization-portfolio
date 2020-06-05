@@ -53,11 +53,11 @@
                     </span>
                 </label>
                 <label>
-                    {{ form.confirm.label }}
-                    <input type="password" name={{ form.confirm.name }} id={{ form.confirm.id }}
-                        aria-errormessage="{{ form.confirm.id }}-error" required>
+                    {{ form.retype_password.label }}
+                    <input type="password" name={{ form.retype_password.name }} id={{ form.retype_password.id }}
+                        aria-errormessage="{{ form.retype_password.id }}-error" required>
                     <span class="form-error">
-                        {{ form.confirm.errors|join('<br/>') }}
+                        {{ form.retype_password.errors|join('<br/>') }}
                     </span>
                 </label>
                 <button class="button" type="submit" value="Register">{{ gettext("Register") }}</button>

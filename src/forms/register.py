@@ -12,8 +12,8 @@ class CustomRegisterForm(RegisterForm):
     first_name = StringField(lazy_gettext('First Name'), [DataRequired()])
     last_name = StringField(lazy_gettext('Last Name'), [DataRequired()])
 
-    password = PasswordField(lazy_gettext('Password'), [DataRequired(),
-                                                        EqualTo(
-                                                            'confirm', message='Passwords must match')
-                                                        ])
-    confirm = PasswordField(lazy_gettext('Confirm your password'))
+    password = PasswordField(lazy_gettext('Password'), [DataRequired()])
+    retype_password = PasswordField(lazy_gettext('Confirm your password'), [DataRequired(),
+                                                                            EqualTo(
+        'password', message='Passwords must match')
+    ])

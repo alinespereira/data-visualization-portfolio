@@ -13,7 +13,7 @@
                     <p>{{ gettext('Please, check your username or e-mail and password.') }}</p>
                 </div>
                 <label>
-                    {{ form.username.label }}
+                    {{ gettext('Username or e-mail') }}
                     <input type="text" name="username" id="username" aria-errormessage="username-error" required>
                     <span class="form-error">
                         {{ form.username.errors|join('<br/ >') }}
@@ -26,6 +26,7 @@
                         {{ form.password.errors|join('<br/ >') }}
                     </span>
                 </label>
+                <br>
                 <button class="button" type="submit" value="Submit">{{ gettext("Log in") }}</button>
             </fieldset>
             <p>{{ gettext("Does not have an account?") }} <a
