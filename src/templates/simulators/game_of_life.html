@@ -23,6 +23,8 @@
     </div>
 </div>
 
+<script src={{ url_for('static', filename='js/simulators/GameOfLife.js') }}></script>
+
 <script>
     const gridDiv = document.getElementById('grid')
     const gridSizeInput = document.getElementById('grid-size')
@@ -35,90 +37,63 @@
             .selectAll('*')
             .remove().enter()
 
+        let width
+        if (window.screen.availWidth > window.screen.availHeight) {
+            width = 0.5 * window.screen.availHeight
+        } else {
+            width = window.screen.availWidth
+        }
+
         const svg = d3.select(gridDiv)
             .append('svg')
-            .attr('width', gridDiv.clientWidth)
-            .attr('height', gridDiv.clientWidth)
+            .attr('class', 'center')
+            .attr('width', width)
+            .attr('height', width)
         const gridSize = +d3.select('#grid-size').property('value')
+
+        if (board.length === 0) {
+            board = createBoard(gridSize, gridSize)
+        }
 
         svg
             .selectAll('*')
             .remove()
 
-        const rectSide = Math.floor(gridDiv.clientWidth / gridSize)
-
-        const gridData = []
-        if (gridData.length === 0) {
-            for (let i = 0; i < gridSize; i++) {
-                gridData.push([])
-                for (let j = 0; j < gridSize; j++) {
-                    gridData[i].push({
-                        i,
-                        j,
-                        alive: board.length > 0 ? board[i][j].alive : 0
-                    })
-                }
-            }
-        }
+        let rectSide = Math.floor(width / gridSize)
 
         const row = svg.selectAll(".row")
-            .data(gridData)
+            .data(board)
             .enter().append("g")
             .attr("class", "row")
 
-        const column = row.selectAll(".square")
-            .data(function (d) {
-                return d
-            })
+        const column = row
+            .selectAll(".square")
+            .data(d => d)
             .enter().append("rect")
-            .attr("class", "square")
-            .attr("x", function (d) {
-                return d.i * rectSide
-            })
-            .attr("y", function (d) {
-                return d.j * rectSide
-            })
+            .attr("class", d => `square ${d.alive ? "alive" : "dead"}`)
+            .attr("x", d => d.i * rectSide)
+            .attr("y", d => d.j * rectSide)
             .attr("width", rectSide)
             .attr("height", rectSide)
-            .style("fill", function (d) {
-                return colorScale(d.alive)
-            })
-            .style("stroke", "#222")
     }
 
-    async function startRandom() {
-        const response = await fetch('/simulators/game-of-life/init', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                size: +d3.select('#grid-size').property('value')
-            }),
-            credentials: 'include',
-        })
-
-        updateGrid(await response.json())
+    function startRandom() {
+        const gridSize = +d3.select('#grid-size').property('value')
+        const board = createRandomBoard(gridSize, gridSize)
+        updateGrid(board)
     }
 
-    async function run() {
-        gridSizeInput.disabled = true;
-        setInterval(async function () {
-            const response = await fetch('/simulators/game-of-life/evolve', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    size: +d3.select('#grid-size').property('value'),
-                    board: d3.selectAll('rect').data()
-                }),
-                credentials: 'include',
-            })
-
-            updateGrid(await response.json())
+    function run() {
+        setInterval(() => {
+            const data = Array.from(d3.selectAll(".square").data())
+            const sizeX = Math.max(...data.map(d => d.i)) + 1
+            const sizeY = Math.max(...data.map(d => d.j)) + 1
+            const board = []
+            while (data.length)
+                board.push(data.splice(0, sizeX))
+            const newBoard = evolve(board)
+            updateGrid(newBoard)
         }, 500)
-        gridSizeInput.disabled = false;
     }
 
 </script>
