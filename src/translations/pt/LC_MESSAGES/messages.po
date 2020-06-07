@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-05 19:33-0300\n"
+"POT-Creation-Date: 2020-06-06 22:36-0300\n"
 "PO-Revision-Date: 2020-06-04 13:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -89,27 +89,43 @@ msgstr "Jogo da vida"
 msgid "Logout"
 msgstr "Sair"
 
-#: src/templates/topbar.html:50 src/templates/user/login.html:29
+#: src/templates/topbar.html:50 src/templates/user/login.html:30
 #: src/templates/user/register.html:65
 msgid "Log in"
 msgstr "Entrar"
 
-#: src/templates/topbar.html:51 src/templates/user/login.html:32
+#: src/templates/topbar.html:51 src/templates/user/login.html:33
 #: src/templates/user/register.html:63
 msgid "Register"
 msgstr "Cadastre-se"
 
-#: src/templates/simulators/game_of_life.html:8
+#: src/templates/simulators/game_of_life.html:7
 msgid "Pick the desired grid size"
 msgstr "Escolha o tamanho do reticulado"
 
-#: src/templates/simulators/game_of_life.html:16
+#: src/templates/simulators/game_of_life.html:14
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: src/templates/simulators/game_of_life.html:20
+msgid "Vertical"
+msgstr "Vertical"
+
+#: src/templates/simulators/game_of_life.html:26
+msgid "Square"
+msgstr "Quadrado"
+
+#: src/templates/simulators/game_of_life.html:32
 msgid "Start random"
 msgstr "Início aleatório"
 
-#: src/templates/simulators/game_of_life.html:17
+#: src/templates/simulators/game_of_life.html:33
 msgid "Run"
 msgstr "Executar"
+
+#: src/templates/simulators/game_of_life.html:34
+msgid "Stop"
+msgstr ""
 
 #: src/templates/user/login.html:10
 msgid "Log in with your account"
@@ -119,7 +135,7 @@ msgstr "Acesse sua conta"
 msgid "Please, check your username or e-mail and password."
 msgstr "Por favor, confira seu usuário ou e-mail e sua senha"
 
-#: src/templates/user/login.html:31
+#: src/templates/user/login.html:32
 msgid "Does not have an account?"
 msgstr "Ainda não possui uma conta?"
 
