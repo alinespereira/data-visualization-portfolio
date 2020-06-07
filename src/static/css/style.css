@@ -25,30 +25,6 @@ svg.center {
     fill: white
 }
 
-@keyframes reveal {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.fade-in {
-    animation-name: reveal;
-    animation-timing-function: easy-in-out;
-    animation-duration: 1s;
-
-    -moz-animation-name: reveal;
-    -moz-animation-timing-function: easy-in-out;
-    -moz-animation-duration: 1s;
-
-    -webkit-animation-name: reveal;
-    -webkit-animation-timing-function: easy-in-out;
-    -webkit-animation-duration: 1s;
-}
-
 .small-form {
     max-width: 500px;
     margin: auto;
