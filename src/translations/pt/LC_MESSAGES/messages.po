@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-06 22:36-0300\n"
+"POT-Creation-Date: 2020-06-07 03:14-0300\n"
 "PO-Revision-Date: 2020-06-04 13:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -99,33 +99,61 @@ msgstr "Entrar"
 msgid "Register"
 msgstr "Cadastre-se"
 
-#: src/templates/simulators/game_of_life.html:7
-msgid "Pick the desired grid size"
-msgstr "Escolha o tamanho do reticulado"
+#: src/templates/simulators/game_of_life.html:8
+msgid "Instructions"
+msgstr "Instruções"
 
-#: src/templates/simulators/game_of_life.html:14
+#: src/templates/simulators/game_of_life.html:11
+msgid ""
+"\n"
+"        <ul id=\"how-to-game-of-life\" class=\"callout no-bullet is-"
+"hidden\" data-toggler=\".is-hidden\">\n"
+"            <li>Pick the grid dimensions;</li>\n"
+"            <li>Click on the squares to toggle them between "
+"<em>alive</em> and <em>dead</em>\n"
+"                or <a onclick=\"startRandom()\">start a random "
+"grid</a>.</li>\n"
+"        </ul>\n"
+"        "
+msgstr ""
+"\n"
+"        <ul id=\"how-to-game-of-life\" class=\"callout no-bullet is-"
+"hidden\" data-toggler=\".is-hidden\">\n"
+"            <li>Escolha as dimensões;</li>\n"
+"            <li>Clique nos quadrados para alternar entre <em>vivo</em> e "
+"<em>morto</em>\n"
+"                ou <a onclick=\"startRandom()\">inicie "
+"aleatoriamente</a>.</li>\n"
+"        </ul>\n"
+"        "
+
+#: src/templates/simulators/game_of_life.html:24
 msgid "Horizontal"
 msgstr "Horizontal"
 
-#: src/templates/simulators/game_of_life.html:20
+#: src/templates/simulators/game_of_life.html:30
 msgid "Vertical"
 msgstr "Vertical"
 
-#: src/templates/simulators/game_of_life.html:26
+#: src/templates/simulators/game_of_life.html:36
 msgid "Square"
 msgstr "Quadrado"
 
-#: src/templates/simulators/game_of_life.html:32
-msgid "Start random"
-msgstr "Início aleatório"
+#: src/templates/simulators/game_of_life.html:42
+msgid "Clear"
+msgstr "Limpar"
 
-#: src/templates/simulators/game_of_life.html:33
-msgid "Run"
-msgstr "Executar"
+#: src/templates/simulators/game_of_life.html:43
+msgid "Random"
+msgstr "Aleatório"
 
-#: src/templates/simulators/game_of_life.html:34
+#: src/templates/simulators/game_of_life.html:44
+msgid "Start"
+msgstr "Iniciar"
+
+#: src/templates/simulators/game_of_life.html:45
 msgid "Stop"
-msgstr ""
+msgstr "Parar"
 
 #: src/templates/user/login.html:10
 msgid "Log in with your account"
@@ -187,4 +215,13 @@ msgstr "Já é um membro?"
 #~ "Bem vindo! Por favor <a "
 #~ "href=%(login)s>entre</a> or <a href=%(register)s"
 #~ ">cadastre-se</a>"
+
+#~ msgid "Pick the desired grid size"
+#~ msgstr "Escolha o tamanho do reticulado"
+
+#~ msgid "Start random"
+#~ msgstr "Início aleatório"
+
+#~ msgid "Run"
+#~ msgstr "Executar"
 

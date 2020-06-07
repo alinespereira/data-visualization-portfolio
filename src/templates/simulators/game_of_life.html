@@ -2,23 +2,33 @@
 
 {% block content %}
 <h1>{{ gettext("Game of life") }}</h1>
-<div class="grid-x grid-margin-x">
-    <div class="cell medium-4 large-6">
-        {{ gettext("Pick the desired grid size") }}:
+<div class="grid-x grid-padding-x">
+    <div class="cell">
+        <button id="instructions" data-toggle="how-to-game-of-life" class="button clear"
+            onclick="toggleHollow()">{{ gettext("Instructions") }}</button>
+    </div>
+    <div class="cell">
+        {% trans %}
+        <ul id="how-to-game-of-life" class="callout no-bullet is-hidden" data-toggler=".is-hidden">
+            <li>Pick the grid dimensions;</li>
+            <li>Click on the squares to toggle them between <em>alive</em> and <em>dead</em>
+                or <a onclick="startRandom()">start a random grid</a>.</li>
+        </ul>
+        {% endtrans %}
     </div>
 </div>
 
-<div class="grid-x grid-margin-x">
+<div class="grid-x grid-padding-x">
     <div class="cell small-6 medium-4 large-2">
         <label>
             {{ gettext("Horizontal") }}
-            <input type="number" id="grid-size-x" min="10" max="100" value="20" oninput="updateGrid()">
+            <input type="number" id="grid-size-x" min="10" max="100" value="20" oninput="createGrid()">
         </label>
     </div>
     <div class="cell small-6 medium-4 large-2">
         <label>
             {{ gettext("Vertical") }}
-            <input type="number" id="grid-size-y" min="10" max="100" value="20" oninput="updateGrid()">
+            <input type="number" id="grid-size-y" min="10" max="100" value="20" oninput="createGrid()">
         </label>
     </div>
     <div class="cell">
@@ -27,23 +37,31 @@
     </div>
 </div>
 
-<div class="grid-x grid-margin-x">
+<div class="grid-x grid-padding-x">
     <div class="cell center-for-small">
-        <a class="hollow button" onclick="startRandom()">{{ gettext("Start random") }}</a>
-        <a class="button success" onclick="run()">{{ gettext("Run") }}</a>
+        <a class="hollow button" onclick="createGrid()">{{ gettext("Clear") }}</a>
+        <a class="hollow button" onclick="startRandom()">{{ gettext("Random") }}</a>
+        <a class="button success" onclick="run()">{{ gettext("Start") }}</a>
         <a class="button alert" id="stop">{{ gettext("Stop") }}</a>
     </div>
 </div>
 
-<div class="grid-x grid-margin-x">
-    <div id="grid" class="cell">
-    </div>
+<div class="grid-x grid-padding-x">
+    <div id="grid" class="cell"></div>
+</div>
 {% endblock content %}
 
 {% block javascript %}
 <script src={{ url_for('static', filename='js/simulators/GameOfLife.js') }}></script>
 
 <script>
+    const instructionsButton = document.getElementById('instructions')
+
+    function toggleHollow() {
+        instructionsButton.classList.toggle('clear')
+        instructionsButton.classList.toggle('tiny')
+    }
+
     const gridInputX = document.getElementById('grid-size-x')
     const gridInputY = document.getElementById('grid-size-y')
     const squareGrid = document.getElementById('square-grid')
@@ -166,8 +184,8 @@
             while (data.length)
                 board.push(data.splice(0, +gridInputX.value))
 
-                const newBoard = evolve(board)
-                updateGrid(newBoard)
+            const newBoard = evolve(board)
+            updateGrid(newBoard)
         }, 500)
 
         stopButton.onclick = () => {
