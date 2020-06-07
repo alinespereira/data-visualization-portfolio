@@ -4,17 +4,34 @@
 <h1>{{ gettext("Game of life") }}</h1>
 <div class="grid-x grid-margin-x">
     <div class="cell medium-4 large-6">
-        <label>
-            {{ gettext("Pick the desired grid size") }}:
-            <input type="number" id="grid-size" min="10" max="100" value="20" oninput="updateGrid()">
-        </label>
+        {{ gettext("Pick the desired grid size") }}:
     </div>
 </div>
 
 <div class="grid-x grid-margin-x">
+    <div class="cell small-6 medium-4 large-2">
+        <label>
+            {{ gettext("Horizontal") }}
+            <input type="number" id="grid-size-x" min="10" max="100" value="20" oninput="updateGrid()">
+        </label>
+    </div>
+    <div class="cell small-6 medium-4 large-2">
+        <label>
+            {{ gettext("Vertical") }}
+            <input type="number" id="grid-size-y" min="10" max="100" value="20" oninput="updateGrid()">
+        </label>
+    </div>
     <div class="cell">
-        <a class="button" onclick="startRandom()">{{ gettext("Start random") }}</a>
-        <a class="button" onclick="run()">{{ gettext("Run") }}</a>
+        <input id="square-grid" type="checkbox" onchange="toggleEnabledInput()">
+        <label for="square-grid">{{ gettext("Square") }}</label>
+    </div>
+</div>
+
+<div class="grid-x grid-margin-x">
+    <div class="cell center-for-small">
+        <a class="hollow button" onclick="startRandom()">{{ gettext("Start random") }}</a>
+        <a class="button success" onclick="run()">{{ gettext("Run") }}</a>
+        <a class="button alert" id="stop">{{ gettext("Stop") }}</a>
     </div>
 </div>
 
@@ -26,40 +43,52 @@
 <script src={{ url_for('static', filename='js/simulators/GameOfLife.js') }}></script>
 
 <script>
+    const gridInputX = document.getElementById('grid-size-x')
+    const gridInputY = document.getElementById('grid-size-y')
+    const squareGrid = document.getElementById('square-grid')
+
+    function toggleEnabledInput() {
+        if (squareGrid.checked) {
+            gridInputY.disabled = true
+            gridInputY.value = gridInputX.value
+            gridInputX.onchange = () => {
+                gridInputY.value = gridInputX.value
+            }
+        } else {
+            gridInputY.disabled = false
+            gridInputX.onchange = undefined
+        }
+    }
+
     const gridDiv = document.getElementById('grid')
-    const gridSizeInput = document.getElementById('grid-size')
+    const stopButton = document.getElementById('stop')
 
     function updateGrid(board = []) {
-        const colorScale = d3.scaleLinear().domain([0, 1])
-            .range(["white", "blue"])
-
         d3.select(gridDiv)
             .selectAll('*')
             .remove().enter()
 
-        let width
-        if (window.screen.availWidth > window.screen.availHeight) {
-            width = 0.5 * window.screen.availHeight
-        } else {
-            width = window.screen.availWidth
-        }
+        const gridSizeX = +d3.select(gridInputX).property('value')
+        const gridSizeY = +d3.select(gridInputY).property('value')
+
+        const height = Math.round(0.5 * window.screen.availHeight / 10) * 10
+        let rectHeight = Math.floor(height / gridSizeY)
+        let rectWidth = rectHeight
+        const width = gridSizeX * rectWidth
 
         const svg = d3.select(gridDiv)
             .append('svg')
             .attr('class', 'center')
             .attr('width', width)
-            .attr('height', width)
-        const gridSize = +d3.select('#grid-size').property('value')
+            .attr('height', height)
 
         if (board.length === 0) {
-            board = createBoard(gridSize, gridSize)
+            board = createBoard(gridSizeX, gridSizeY)
         }
 
         svg
             .selectAll('*')
             .remove()
-
-        let rectSide = Math.floor(width / gridSize)
 
         const row = svg.selectAll(".row")
             .data(board)
@@ -71,29 +100,46 @@
             .data(d => d)
             .enter().append("rect")
             .attr("class", d => `square ${d.alive ? "alive" : "dead"}`)
-            .attr("x", d => d.i * rectSide)
-            .attr("y", d => d.j * rectSide)
-            .attr("width", rectSide)
-            .attr("height", rectSide)
+            .attr("x", d => d.col * rectWidth)
+            .attr("y", d => d.row * rectHeight)
+            .attr("width", rectWidth)
+            .attr("height", rectHeight)
     }
 
     function startRandom() {
-        const gridSize = +d3.select('#grid-size').property('value')
-        const board = createRandomBoard(gridSize, gridSize)
+        stopButton.click()
+        const gridSizeX = +d3.select(gridInputX).property('value')
+        const gridSizeY = +d3.select(gridInputY).property('value')
+        const board = createRandomBoard(gridSizeX, gridSizeY)
         updateGrid(board)
     }
 
     function run() {
-        setInterval(() => {
+        stopButton.click()
+        gridInputX.disabled = true
+        gridInputY.disabled = true
+        squareGrid.disabled = true
+
+        const id = setInterval(() => {
             const data = Array.from(d3.selectAll(".square").data())
-            const sizeX = Math.max(...data.map(d => d.i)) + 1
-            const sizeY = Math.max(...data.map(d => d.j)) + 1
             const board = []
             while (data.length)
-                board.push(data.splice(0, sizeX))
-            const newBoard = evolve(board)
-            updateGrid(newBoard)
+                board.push(data.splice(0, +gridInputX.value))
+
+            try {
+                const newBoard = evolve(board)
+                updateGrid(newBoard)
+            } catch {
+                stopButton.click()
+            }
         }, 500)
+
+        stopButton.onclick = () => {
+            clearInterval(id)
+            gridInputX.disabled = false
+            gridInputY.disabled = false
+            squareGrid.disabled = false
+        }
     }
 
 </script>
