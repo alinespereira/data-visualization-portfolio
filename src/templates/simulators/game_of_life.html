@@ -38,8 +38,9 @@
 <div class="grid-x grid-margin-x">
     <div id="grid" class="cell">
     </div>
-</div>
+{% endblock content %}
 
+{% block javascript %}
 <script src={{ url_for('static', filename='js/simulators/GameOfLife.js') }}></script>
 
 <script>
@@ -63,17 +64,18 @@
     const gridDiv = document.getElementById('grid')
     const stopButton = document.getElementById('stop')
 
-    function updateGrid(board = []) {
+    function createGrid() {
+        stopButton.click()
         d3.select(gridDiv)
             .selectAll('*')
-            .remove().enter()
+            .remove()
 
         const gridSizeX = +d3.select(gridInputX).property('value')
         const gridSizeY = +d3.select(gridInputY).property('value')
 
-        const height = Math.round(0.5 * window.screen.availHeight / 10) * 10
-        let rectHeight = Math.floor(height / gridSizeY)
-        let rectWidth = rectHeight
+        const height = Math.round(.8 * (window.screen.availHeight - gridDiv.offsetTop))
+        const rectHeight = Math.floor(height / gridSizeY)
+        const rectWidth = rectHeight
         const width = gridSizeX * rectWidth
 
         const svg = d3.select(gridDiv)
@@ -82,9 +84,7 @@
             .attr('width', width)
             .attr('height', height)
 
-        if (board.length === 0) {
-            board = createBoard(gridSizeX, gridSizeY)
-        }
+        const board = createBoard(gridSizeX, gridSizeY)
 
         svg
             .selectAll('*')
@@ -99,11 +99,51 @@
             .selectAll(".square")
             .data(d => d)
             .enter().append("rect")
+            .attr("class", "square dead")
+            .attr("x", d => d.col * rectWidth)
+            .attr("y", d => d.row * rectHeight)
+            .attr("width", rectWidth)
+            .attr("height", rectHeight)
+            .on('click', handleRectClick)
+    }
+
+    function updateGrid(board) {
+        const svg = d3.select(gridDiv).select('svg')
+
+        svg.selectAll('g').remove()
+
+        const gridSizeX = +d3.select(gridInputX).property('value')
+        const gridSizeY = +d3.select(gridInputY).property('value')
+        const rectWidth = Math.floor(+svg.attr('width') / gridSizeX)
+        const rectHeight = Math.floor(+svg.attr('height') / gridSizeY)
+
+        const rows = svg
+            .selectAll('.row')
+            .data(board)
+            .enter().append("g")
+            .attr("class", "row")
+
+        const rects = rows
+            .selectAll(".square")
+            .data(d => d)
+            .enter().append("rect")
             .attr("class", d => `square ${d.alive ? "alive" : "dead"}`)
             .attr("x", d => d.col * rectWidth)
             .attr("y", d => d.row * rectHeight)
             .attr("width", rectWidth)
             .attr("height", rectHeight)
+            .on('click', handleRectClick)
+    }
+
+    function handleRectClick() {
+        this.classList.toggle('alive')
+        this.classList.toggle('dead')
+        const rect = d3.select(this)
+        const datum = rect.datum()
+        rect.data(Object.assign(datum, {
+                alive: !datum.alive
+            }))
+            .attr("class", d => `square ${d.alive ? "alive" : "dead"}`)
     }
 
     function startRandom() {
@@ -126,12 +166,8 @@
             while (data.length)
                 board.push(data.splice(0, +gridInputX.value))
 
-            try {
                 const newBoard = evolve(board)
                 updateGrid(newBoard)
-            } catch {
-                stopButton.click()
-            }
         }, 500)
 
         stopButton.onclick = () => {
@@ -142,5 +178,7 @@
         }
     }
 
+    createGrid()
+
 </script>
-{% endblock content %}
+{% endblock javascript %}
