@@ -15,10 +15,11 @@
         <div class="hide-for-medium">
             {% if current_user.is_authenticated %}
             {{ gettext("Hello, %(name)s!", name=current_user.first_name) }}
+            <br>
+            <a href={{ url_for('user.logout') }}>{{ gettext("Logout") }}</a>
             {% else %}
             {% with login=url_for('user.login'), register=url_for('user.register')  %}
-            {% trans %}Welcome! Please <a href={{ login }}>login</a> or <a
-                href={{ register }}>register</a>{% endtrans %}
+            {% trans %}Please <a href={{ login }}>login</a> or <a href={{ register }}>register</a>{% endtrans %}
             {% endwith %}
             {% endif %}
             <hr>

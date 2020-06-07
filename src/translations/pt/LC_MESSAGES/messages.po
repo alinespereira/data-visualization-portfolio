@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-07 03:14-0300\n"
+"POT-Creation-Date: 2020-06-07 03:52-0300\n"
 "PO-Revision-Date: 2020-06-04 13:10-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -51,50 +51,69 @@ msgid "Confirm your password"
 msgstr "Digite sua senha novamente"
 
 #: src/templates/home.html:6
-msgid "Hello, World!"
-msgstr "Olá, mundo!"
+msgid "Welcome to my portfolio!"
+msgstr "Bem-vindo ao meu portfólio"
+
+#: src/templates/home.html:14 src/templates/topbar.html:22
+#, python-format
+msgid "Please <a href=%(login)s>login</a> or <a href=%(register)s>register</a>"
+msgstr "Por favor <a href=%(login)s>entre</a> ou <a href=%(register)s>cadastre-se</a>"
 
 #: src/templates/index.html:1
-msgid "This is the index"
-msgstr "Este é o índice."
+msgid ""
+"\n"
+"<div class=\"grid-x grid-padding-x\">\n"
+"    <div class=\"cell\">\n"
+"        <p>\n"
+"            Here you'll find samples of my work through examples\n"
+"        </p>\n"
+"        <p>\n"
+"            It is still a work in progress, so keep up with us.\n"
+"        </p>\n"
+"    </div>\n"
+"</div>\n"
+msgstr ""
+"\n"
+"<div class=\"grid-x grid-padding-x\">\n"
+"    <div class=\"cell\">\n"
+"        <p>\n"
+"            Aqui você encontrará amostras do meu trabalho por meio de "
+"exemplos.\n"
+"        </p>\n"
+"        <p>\n"
+"            É um trabalho em curso, então siga conosco.\n"
+"        </p>\n"
+"    </div>\n"
+"</div>\n"
 
 #: src/templates/topbar.html:4
 msgid "Menu"
 msgstr "Menu"
 
-#: src/templates/topbar.html:17 src/templates/topbar.html:47
+#: src/templates/topbar.html:17 src/templates/topbar.html:48
 #, python-format
 msgid "Hello, %(name)s!"
 msgstr "Olá, %(name)s!"
 
-#: src/templates/topbar.html:20
-#, python-format
-msgid ""
-"Welcome! Please <a href=%(login)s>login</a> or <a\n"
-"                href=%(register)s>register</a>"
-msgstr ""
-"Bem vindo! Por favor <a href=%(login)s>entre</a> ou <a\n"
-"                href=%(register)s>cadastre-se</a>"
+#: src/templates/topbar.html:19 src/templates/topbar.html:49
+msgid "Logout"
+msgstr "Sair"
 
-#: src/templates/simulators/home.html:4 src/templates/topbar.html:35
+#: src/templates/simulators/home.html:4 src/templates/topbar.html:36
 msgid "Simulators"
 msgstr "Simuladores"
 
 #: src/templates/simulators/game_of_life.html:4
-#: src/templates/simulators/home.html:7 src/templates/topbar.html:37
+#: src/templates/simulators/home.html:7 src/templates/topbar.html:38
 msgid "Game of life"
 msgstr "Jogo da vida"
 
-#: src/templates/topbar.html:48
-msgid "Logout"
-msgstr "Sair"
-
-#: src/templates/topbar.html:50 src/templates/user/login.html:30
+#: src/templates/topbar.html:51 src/templates/user/login.html:30
 #: src/templates/user/register.html:65
 msgid "Log in"
 msgstr "Entrar"
 
-#: src/templates/topbar.html:51 src/templates/user/login.html:33
+#: src/templates/topbar.html:52 src/templates/user/login.html:33
 #: src/templates/user/register.html:63
 msgid "Register"
 msgstr "Cadastre-se"
@@ -224,4 +243,47 @@ msgstr "Já é um membro?"
 
 #~ msgid "Run"
 #~ msgstr "Executar"
+
+#~ msgid "Hello, World!"
+#~ msgstr "Olá, mundo!"
+
+#~ msgid "This is the index"
+#~ msgstr "Este é o índice."
+
+#~ msgid "Welcome to my portfolio!"
+#~ msgstr "Bem-vindo ao meu portfólio!"
+
+#~ msgid ""
+#~ "\n"
+#~ "<div class=\"grid-x grid-padding-x\">\n"
+#~ "    <div class=\"cell\">\n"
+#~ "        <p>\n"
+#~ "            Aqui você encontrará amostras "
+#~ "do meu trabalho por meio de "
+#~ "exemplos\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "            Ainda é um trabalho em curso, portanto siga conosco.\n"
+#~ "        </p>\n"
+#~ "    </div>\n"
+#~ "</div>\n"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "            Please <a href=%(login)s>login</a> "
+#~ "or <a href=%(register)s>register</a>\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "            Por favor <a "
+#~ "href=%(login)s>entre</a> or <a href=%(register)s"
+#~ ">cadastre-se</a>\n"
+
+#~ msgid ""
+#~ "Welcome! Please <a href=%(login)s>login</a> or <a\n"
+#~ "                href=%(register)s>register</a>"
+#~ msgstr ""
+#~ "Bem vindo! Por favor <a href=%(login)s>entre</a> ou <a\n"
+#~ "                href=%(register)s>cadastre-se</a>"
 

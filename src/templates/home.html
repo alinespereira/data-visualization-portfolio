@@ -3,10 +3,17 @@
 {% block content %}
 <div class="grid-x">
     <div class="cell">
-        <h1>{{ gettext("Hello, World!") }}</h1>
+        <h1>{{ gettext("Welcome to my portfolio!") }}</h1>
 
         {% if current_user.is_authenticated %}
         {% include 'index.html' %}
+        {% else %}
+
+        {% with login=url_for('user.login'), register=url_for('user.register')  %}
+        <p>
+            {% trans %}Please <a href={{ login }}>login</a> or <a href={{ register }}>register</a>{% endtrans %}
+            {% endwith %}
+        </p>
         {% endif %}
     </div>
 </div>
